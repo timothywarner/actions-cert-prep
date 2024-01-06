@@ -34,10 +34,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
+    - name: Azure Login
+      uses: Azure/login@v1.5.1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        enable-AzPSSession: true
+        environment: azurecloud
+        allow-no-subscriptions: false
+        audience: api://AzureADTokenExchange
+        auth-type: SERVICE_PRINCIPAL
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
