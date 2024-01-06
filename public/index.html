@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Node.js App</title>
+</head>
+
+<body>
+  <form action="/" method="POST">
+    Number 1: <input type="text" name="number1"><br>
+    Number 2: <input type="text" name="number2"><br>
+    <input type="submit" value="Submit">
+  </form>
+  <p id="result"></p>
+  <script>
+    const form = document.querySelector('form');
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const data = new URLSearchParams(new FormData(form));
+      const response = await fetch('/', { method: 'POST', body: data });
+      const resultText = await response.text();
+      document.getElementById('result').innerText = resultText;
+    };
+  </script>
+</body>
+
+</html>

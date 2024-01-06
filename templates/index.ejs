@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sum Calculator</title>
+</head>
+
+<body>
+  <h1>Sum Calculator</h1>
+  <form action="/calculate" method="POST">
+    <input type="text" name="num1" placeholder="Enter first number" required>
+    <input type="text" name="num2" placeholder="Enter second number" required>
+    <button type="submit">Calculate</button>
+  </form>
+  <% if (result) { %>
+    <p>
+      <%= result %>
+    </p>
+    <% } %>
+      <% if (error) { %>
+        <p style="color: red;">
+          <%= error %>
+        </p>
+        <% } %>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flask App</title>
+</head>
+
+<body>
+  <form method="POST">
+    Number 1: <input type="text" name="number1"><br>
+    Number 2: <input type="text" name="number2"><br>
+    <input type="submit" value="Submit">
+  </form>
+  {% if numbers_received %}
+  <p>{{ numbers_received }}</p>
+  <p>{{ sum_result }}</p>
+  {% elif message %}
+  <p>{{ message }}</p>
+  {% endif %}
+</body>
+
+</html>
