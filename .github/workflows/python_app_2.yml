@@ -1,4 +1,4 @@
-name: Python application test
+name: Python app test (includes env var example)
 
 on:
   push:

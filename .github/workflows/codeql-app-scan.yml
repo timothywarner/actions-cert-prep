@@ -1,0 +1,35 @@
+# CodeQL Analysis Workflow
+#
+# After this workflow runs, you can view the results in the GitHub UI:
+# 1. Navigate to your GitHub repository.
+# 2. Click on the "Security" tab near the top of the page.
+# 3. Go to the "Code scanning alerts" section.
+# 4. Here, you can review all CodeQL alerts and recommendations.
+#
+name: "CodeQL Analysis"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 14 * * 1' # Scheduled to run every Monday at 14:00 UTC
+  workflow_dispatch:
+    
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: python # Set to 'python' for Python codebase
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1

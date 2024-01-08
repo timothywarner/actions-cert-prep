@@ -1,0 +1,36 @@
+name: Python app build (generate artifact)
+
+on: push
+    worfklow_dispatch:
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        python test_app.py
+
+    - name: Package Application
+      run: |
+        zip -r app-package.zip app.py public templates requirements.txt
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: packaged-app
+        path: app-package.zip
+
