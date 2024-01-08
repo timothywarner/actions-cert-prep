@@ -5,9 +5,8 @@
 # 2. Click on the "Security" tab near the top of the page.
 # 3. Go to the "Code scanning alerts" section.
 # 4. Here, you can review all CodeQL alerts and recommendations.
-#
 
-name: "CodeQL App Scan"
+name: "CodeQL app scan"
 
 on:
   push:
