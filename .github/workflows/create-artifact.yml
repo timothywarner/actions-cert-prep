@@ -1,7 +1,10 @@
+# Download the artifact from GitHub UI
+
 name: Python app build (generate artifact)
 
-on: push
-    worfklow_dispatch:
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   build-and-package:
