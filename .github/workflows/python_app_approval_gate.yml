@@ -10,6 +10,7 @@ jobs:
     if: github.event_name == 'push'  # Only run build on push, not on workflow_dispatch
     runs-on: ubuntu-latest
     environment: dev  # Specify the development environment
+
     steps:
     - uses: actions/checkout@v2  # Checks out your repository under $GITHUB_WORKSPACE
 
@@ -28,10 +29,10 @@ jobs:
     #   run: pytest
 
     - name: Notify Teams on Build Completion
-      uses: ataylorme/action-msteams-notify@v1
+      uses: cschleiden/teams-notifier-action@v1
       if: always()  # Send notification regardless of job success/failure
       with:
-        webhookUri: ${{ secrets.TEAMS_WEBHOOK_URL }}  # Your Microsoft Teams webhook URL
+        webhook-uri: ${{ secrets.TEAMS_WEBHOOK_URL }}  # Your Microsoft Teams webhook URL
         title: 'Build Completed'
         message: 'The build job for the Python adder app has completed.'
         themeColor: '0078D7'  # Notification card color (blue)
@@ -41,6 +42,7 @@ jobs:
     needs: build  # This job runs after the build job completes
     runs-on: ubuntu-latest
     environment: prod  # Specify the production environment
+
     steps:
     - uses: actions/checkout@v2  # Checks out the repo code
 
@@ -63,10 +65,10 @@ jobs:
         package: '.'
 
     - name: Notify Teams on Deployment Completion
-      uses: ataylorme/action-msteams-notify@v1
+      uses: cschleiden/teams-notifier-action@v1
       if: always()  # Send notification regardless of job success/failure
       with:
-        webhookUri: ${{ secrets.TEAMS_WEBHOOK_URL }}  # Your Microsoft Teams webhook URL
+        webhook-uri: ${{ secrets.TEAMS_WEBHOOK_URL }}  # Your Microsoft Teams webhook URL
         title: 'Deployment Completed'
         message: 'The deploy job for the Python adder app to production has completed.'
         themeColor: '28A745'  # Notification card color (green)
