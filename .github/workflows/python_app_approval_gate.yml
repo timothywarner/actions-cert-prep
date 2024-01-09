@@ -1,40 +1,38 @@
-name: Python app test (standard)
+name: Python adder app w/ approval gate for Production
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [ main ]  # Trigger the build job on pushes to main
+  workflow_dispatch:    # Allow manual triggering for the deployment job
 
 jobs:
   build:
+    if: github.event_name == 'push'  # Only run build on push, not on workflow_dispatch
     runs-on: ubuntu-latest
+    environment: dev  # Specify the development environment
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
     # - name: Test with pytest
     #   run: |
     #      pytest
 
   deploy:
-    needs: build
+    if: github.event_name == 'workflow_dispatch'  # Only run deploy on manual trigger
+    needs: build  # Ensure deploy only runs after build succeeds
     runs-on: ubuntu-latest
+    environment: prod  # Specify the production environment
 
     steps:
     - uses: actions/checkout@v2
-
     - name: Azure Login
       uses: Azure/login@v1.5.1
       with:
@@ -44,7 +42,6 @@ jobs:
         allow-no-subscriptions: false
         audience: api://AzureADTokenExchange
         auth-type: SERVICE_PRINCIPAL
-
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
