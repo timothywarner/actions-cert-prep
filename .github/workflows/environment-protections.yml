@@ -1,0 +1,48 @@
+name: Multi-Environment Deployment
+
+on:
+  push:
+    branches:
+      - alpha
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: python -m unittest
+
+  deploy-dev:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Development
+        run: echo "Deploying to Development environment..."
+
+  deploy-test:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Test
+        run: echo "Deploying to Test environment..."
+
+  deploy-prod:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: prod
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Production
+        run: echo "Deploying to Production environment..."

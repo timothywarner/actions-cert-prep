@@ -1,0 +1,31 @@
+name: Deployment with Approval Gates
+
+on:
+  push:
+    branches:
+      - alpha
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: python -m unittest
+
+  deploy-to-prod:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Production
+        run: echo "Deploying to production environment..."
+        # Replace with actual deployment commands
