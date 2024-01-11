@@ -3,8 +3,15 @@ name: post-package
 on:
   push:
     branches:
-      - main  # or any other branch you want to trigger the workflow
+      - main
 
 jobs:
-  call-packaging-template:
-    uses: timothywarner/.github/.github/workflows/hello-world-package.yml@main
+  deploy-to-production:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Call Packaging Template
+        uses: timothywarner/.github/.github/workflows/hello-world-package.yml@main
