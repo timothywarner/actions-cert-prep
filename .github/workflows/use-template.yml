@@ -1,6 +1,8 @@
 name: use-template
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   call-template:
