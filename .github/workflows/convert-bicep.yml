@@ -15,6 +15,6 @@ jobs:
       - name: bicep-build-output
         uses: Azure/bicep-build-action@v1.0.1
         with:
-          bicepFilePath: ./create-storage-account.bicep
-          outputFilePath: ./create-storage-account.json
+          bicepFilePath: ./new-storage-account.bicep
+          outputFilePath: ./new-storage-account.json
               
