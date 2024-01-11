@@ -14,3 +14,6 @@ jobs:
       uses: timothywarner/actions-cert-prep/custom_js_action@main
       with:
         who-to-greet: 'GitHub Actions User'
+
+    - name: Run Custom Docker Action
+      uses: timothywarner/actions-cert-prep/custom_docker_action@main
