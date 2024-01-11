@@ -1,0 +1,10 @@
+name: post-package
+
+on:
+  push:
+    branches:
+      - main  # or any other branch you want to trigger the workflow
+
+jobs:
+  call-packaging-template:
+    uses: timothywarner/.github/.github/workflows/hello-world-package.yml@main
