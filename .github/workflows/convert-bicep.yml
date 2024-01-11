@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: bicep-build-output
-      - uses: Azure/bicep-build-action@v1.0.1
-      - with:
+        uses: Azure/bicep-build-action@v1.0.1
+        with:
           bicepFilePath: ./create-storage-account.bicep
           outputFilePath: ./create-storage-account.json
               
