@@ -1,0 +1,16 @@
+name: Custom JS Action Workflow
+
+on: [push]
+
+jobs:
+  run-custom-js-action:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Run Custom JavaScript Action
+      uses: timothywarner/actions-cert-prep/custom_js_action@main
+      with:
+        who-to-greet: 'GitHub Actions User'
