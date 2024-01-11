@@ -1,0 +1,15 @@
+name: Test Approval Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  hello-world-job:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Print Hello World
+        run: echo "Hello world"
