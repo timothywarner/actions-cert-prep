@@ -1,0 +1,34 @@
+name: 'Example GitHub Action'
+description: 'This action performs an example task based on inputs and provides outputs.'
+
+# Inputs define what user can pass to your action
+inputs:
+  input1:
+    description: 'The first input parameter.'
+    required: true
+    default: 'default1'
+
+  input2:
+    description: 'The second input parameter.'
+    required: false
+    default: 'default2'
+
+# Outputs define what this action provides to subsequent steps
+outputs:
+  output1:
+    description: 'The first output parameter.'
+
+  output2:
+    description: 'The second output parameter.'
+
+# The `runs` block defines the environment and command that runs when the action executes
+runs:
+  using: 'docker' # This action runs in a Docker container
+  image: 'Dockerfile' # Path to the Dockerfile
+
+  # `entrypoint` and `args` can be used to define how the Docker container is executed
+  # entrypoint: '/path/to/entrypoint.sh'
+
+  # args:
+  # - '${{ inputs.input1 }}'
+  # - '${{ inputs.input2 }}'
