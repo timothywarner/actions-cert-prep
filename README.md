@@ -1,5 +1,9 @@
 # GitHub Actions Cert Prep
 
+## Workflow status
+
+[![use-template](https://github.com/timothywarner/actions-cert-prep/actions/workflows/use-template.yml/badge.svg)](https://github.com/timothywarner/actions-cert-prep/actions/workflows/use-template.yml)
+
 ## Contact info
 
 - [Tim Warner](mailto:timothywarner316@gmail.com)
