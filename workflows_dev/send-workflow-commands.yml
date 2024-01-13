@@ -1,0 +1,41 @@
+name: Send Workflow Commands
+
+# This workflow is triggered on push events
+on: push
+
+jobs:
+  demo-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    # Run custom JavaScript action
+    - name: Run Custom JavaScript Action
+      id: custom-action
+      uses: ./custom_js_action
+      with:
+        input-param: 'My name is Tim W.'
+
+    # Example of run command with workflow commands
+    - name: Demonstrate Workflow Commands
+      run: |
+        echo "Running on $(uname -a)"
+        echo "Current directory: $(pwd)"
+        # Setting an output parameter
+        echo "::set-output name=current_time::$(date)"
+        # Adding a system path (traditional method)
+        # echo "::add-path::/path/to/dir"
+        # Writing to the environment file (New-ish method)
+        echo "DEMO_ENV='This is a demo'" >> $GITHUB_ENV
+
+    # Use environment variable set in previous step
+    - name: Use Environment Variable
+      run: echo "Environment variable DEMO_ENV is $DEMO_ENV"
+
+    # Use output from the previous step
+    - name: Get Output from Previous Step
+      run: echo "The time from the previous step was ${{ steps.custom-action.outputs.current_time }}"
+

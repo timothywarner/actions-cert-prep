@@ -1,0 +1,46 @@
+name: Python CI/CD Workflow
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        python -m unittest
+
+  deploy-to-stage:
+    needs: build-and-test  # This job runs after build-and-test completes successfully
+    runs-on: ubuntu-latest
+    environment: stage  # Targeting the 'stage' environment
+    permissions:
+      contents: read
+      deployments: write  # Required permission for deployments
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Deploy to stage
+      run: |
+        # Add your deployment script/command here
+        echo "Deploying to stage environment"
+      # The specifics of this step depend on how you deploy your application
