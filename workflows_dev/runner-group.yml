@@ -1,0 +1,26 @@
+name: Example Workflow with Multiple Runners
+
+on: [push]
+
+jobs:
+  windows-job:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run a script on Windows runner
+      run: |
+        # Windows specific commands
+        Write-Host "Running on Windows Server runner"
+
+  self-hosted-job:
+    runs-on: [self-hosted, my-runner-group]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run a script on self-hosted runner
+      run: |
+        # Commands specific to your self-hosted environment
+        echo "Running on my custom self-hosted runner"
