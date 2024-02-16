@@ -1,0 +1,18 @@
+name: Dependabot Alerts to Teams
+
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: '0 8 * * *'  # This schedules the job to run daily at 8 AM. Adjust as needed.
+
+jobs:
+  notification:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Send notification to Microsoft Teams
+      run: |
+        curl -H "Content-Type: application/json" -d "{\"text\": \"New GitHub Action Notification: ${{ github.event.head_commit.message }}\"}" https://timwinfo2.webhook.office.com/webhookb2/0d7e97c6-fe96-44a5-a2f5-07fbedf12152@f74b1450-e46a-41df-abee-ebf3621bfd85/IncomingWebhook/28d558bd6bb44f29b0e77c35c6189a9e/873121f6-d8e2-4dee-ace0-8e7819c2b02d

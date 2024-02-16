@@ -1,0 +1,18 @@
+name: Secret Scanning Workflow Using Third Party Action
+
+on:
+# push:
+#    branches: [ main ]
+#  schedule:
+#    - cron: '0 4 * * *'  # Runs every day at 4 AM UTC
+  workflow_dispatch:
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run secret scanning
+        uses: zricethezav/gitleaks-action@v1.6.0

@@ -1,0 +1,41 @@
+name: "CodeQL external query example"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  codeql-analysis:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['python']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Checkout custom query repository
+      uses: actions/checkout@v2
+      with:
+        repository: 'timothywarner-org/openai-chat'
+        path: 'external-queries'
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        ${{ matrix.additional-setup }}
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+        queries: ./external-queries/special-queries.ql
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1

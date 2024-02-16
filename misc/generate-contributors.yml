@@ -1,0 +1,26 @@
+name: Generate CONTRIBUTORS.md
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Runs at 00:00 UTC on the 1st of every month
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Generate CONTRIBUTORS.md
+        run: |
+          echo "# Contributors" > CONTRIBUTORS.md
+          git log --format='%aN <%aE>' | sort -u >> CONTRIBUTORS.md
+
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'Tim Warner'
+          git config --global user.email 'timothywarner316@gmail.com'
+          git add CONTRIBUTORS.md
+          git commit -m "Update CONTRIBUTORS.md" || exit 0  # Exit gracefully if no changes
+          git push

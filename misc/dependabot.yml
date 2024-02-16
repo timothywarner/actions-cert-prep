@@ -1,0 +1,50 @@
+version: 2
+
+# Configure updates for the Python package ecosystem (pip)
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"  # Specify the root directory of the project
+
+    # Set the update schedule to daily
+    schedule:
+      interval: "daily"
+
+    # Limit the number of open pull requests created by Dependabot to 10
+    open-pull-requests-limit: 10
+
+    # Ignore updates for the pytest package with versions less than 5.0.0
+    ignore:
+      - dependency-name: "pytest"
+        versions: ["<5.0.0"]
+
+    # Allow updates for the requests package with versions starting from 2.0.0
+    allow:
+      - dependency-name: "requests"
+        versions: ["^2.0.0"]
+
+    # Reject updates for the numpy package with version 1.19.4
+    reject:
+      - dependency-name: "numpy"
+        versions: ["==1.19.4"]
+
+    # Pin the django package to version 3.2.4
+    pin:
+      - dependency-name: "django"
+        version: "3.2.4"
+
+    # Specify reviewers for the Dependabot pull requests
+    reviewers:
+      - "dependabot[bot]"
+
+    # Specify assignees for the Dependabot pull requests
+    assignees:
+      - "timot"
+
+    # Add a label to the Dependabot pull requests
+    labels:
+      - "dependencies"
+
+    # Customize the commit message prefix and include the scope
+    commit-message:
+      prefix: "chore(deps):"
+      include: "scope"

@@ -1,0 +1,27 @@
+name: GitHub Alerts to Teams
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, closed]
+    branches:
+      - main # or your default branch
+    paths:
+      - 'requirements.txt' # This checks if the PR modifies the requirements.txt file
+
+jobs:
+  notifyTeams:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check if PR is from Dependabot
+      if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' # This checks if the PR is created by Dependabot
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: 'https://timwinfo2.webhook.office.com/webhookb2/0d7e97c6-fe96-44a5-a2f5-07fbedf12152@f74b1450-e46a-41df-abee-ebf3621bfd85/IncomingWebhook/28d558bd6bb44f29b0e77c35c6189a9e/873121f6-d8e2-4dee-ace0-8e7819c2b02d'
+        method: 'POST'
+        contentType: 'application/json'
+        "data": |
+          {
+            "title": "Dependabot Alert",
+            "text": "Dependabot has ${{{ github.event.action }}} a pull request in ${{ github.repository }}. \n PR Title: ${{ github.event.pull_request.title }} \n PR URL: ${{ github.event.pull_request.html_url }}"
+          }

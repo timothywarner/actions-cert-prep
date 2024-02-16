@@ -1,0 +1,39 @@
+name: "CodeQL with two-part matrix"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 14 * * 1'  # Weekly analysis
+
+jobs:
+  codeql-analysis:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['python', 'javascript']  # Now includes JavaScript
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+      if: matrix.language == 'python'  # Conditional setup for Python
+
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+      if: matrix.language == 'python'  # Conditional step for Python dependencies
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
