@@ -31,4 +31,4 @@
 
 - [Introduction to GitHub Actions - Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/introduction-to-github-actions/)
 - [Automate your workflow with GitHub Actions - Microsoft Learn](https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/)
-- G[itHub certifications](https://resources.github.com/learn/certifications/)
+- [GitHub certifications](https://resources.github.com/learn/certifications/)
