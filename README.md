@@ -24,11 +24,23 @@
 ## Core references
 
 - [GitHub Actions documentation](https://docs.github.com/actions)
+- [GitHub Actions pricing](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)
 - [GitHub Actions Marketplace](https://github.com/marketplace?type=actions)
 - [Awesome Actions](https://github.com/sdras/awesome-actions)
 
 ## GitHub Actions training and certification
 
+- [GitHub Actions training collection @ Microsoft Learn](https://learn.microsoft.com/en-us/collections/n5p4a5z7keznp5)
 - [Introduction to GitHub Actions - Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/introduction-to-github-actions/)
 - [Automate your workflow with GitHub Actions - Microsoft Learn](https://learn.microsoft.com/en-us/training/paths/automate-workflow-github-actions/)
 - [GitHub certifications](https://resources.github.com/learn/certifications/)
+
+## GitHub certification program
+
+- [GitHub Certification Program](https://resources.github.com/learn/certifications/)
+- [GitHub Actions study guide](https://assets.ctfassets.net/wfutmusr1t3h/2mMJ6nECbUAdiQMTObbPw6/67cfbffa68fed774a1d280c6c1346635/github-actions-exam-preparation-study-guide__3_.pdf)
+- [Candidate handbook](https://examregistration.github.com/handbook)
+- [Program FAQs](https://examregistration.github.com/faq)
+- [PSI Testing - system specs](https://examregistration.github.com/faq)
+- [PSI Testing - overview video](https://examregistration.github.com/faq)
+- Registering for a GitHub certification exam
