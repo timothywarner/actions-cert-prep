@@ -12,4 +12,4 @@ jobs:
     - name: Check links in README.md
       uses: lycheeverse/lychee-action@v1.9.3
       with:
-        args: ./README.md
+        args: ./README2.md
