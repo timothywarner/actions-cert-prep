@@ -43,4 +43,4 @@
 - [Program FAQs](https://examregistration.github.com/faq)
 - [PSI Testing - system specs](https://examregistration.github.com/faq)
 - [PSI Testing - overview video](https://examregistration.github.com/faq)
-- Registering for a GitHub certification exam
+- [Registering for a GitHub certification exam](http://taketheexamrightnow.com)
