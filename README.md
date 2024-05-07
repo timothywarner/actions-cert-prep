@@ -46,3 +46,4 @@
 - [PSI Testing - system specs](https://examregistration.github.com/faq)
 - [PSI Testing - overview video](https://examregistration.github.com/faq)
 - [Registering for a GitHub certification exam](http://taketheexamrightnow.com)
+- [Udemy practice exams by Ben Muschko](https://github.com/bmuschko/#udemy-course-discount-coupons-)
