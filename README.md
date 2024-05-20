@@ -1,5 +1,7 @@
 # GitHub Actions Cert Prep
 
+Hi!
+
 [![Check Links](https://github.com/timothywarner/actions-cert-prep/actions/workflows/links.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/timothywarner/actions-cert-prep/actions/workflows/links.yml)
 
 ## Contact info
