@@ -15,7 +15,7 @@
     "express-handlebars": ">=4.7.7"
   },
   "devDependencies": {
-    "mocha": "5.2.0",
+    "mocha": "10.4.0",
     "chai": "4.2.0",
     "chai-http": "4.2.0"
   }
