@@ -1,5 +1,7 @@
 # GitHub Actions Cert Prep
 
+[![GitHub Actions Certification - Demo Repo](https://img.shields.io/badge/GitHub_Actions_Certification-Course_Repo-blue?logo=github&logoColor=white)](https://github.com/timothywarner-org/nodejs-demoapp)
+
 [![Check Links](https://github.com/timothywarner/actions-cert-prep/actions/workflows/links.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/timothywarner/actions-cert-prep/actions/workflows/links.yml)
 
 ## Contact info
