@@ -1,4 +1,4 @@
-# GitHub Actions Cert Prep
+# GitHub Actions Cert Prep v2
 
 [![GitHub Actions Certification - Demo Repo](https://img.shields.io/badge/GitHub_Actions_Certification-Demo_Repo-blue?logo=github&logoColor=white)](https://github.com/timothywarner/nodejs-demoapp)
 
